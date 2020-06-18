@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import CounterOne from "./components/counterOne";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <p>
           123
         </p>
+        <CounterOne/>
       </header>
     </div>
   );
