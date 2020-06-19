@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {onAdd, onRemove, onAddNumber} from "../actions/counterTwoActions";
-import {COUNTER_TWO_ADD, COUNTER_TWO_REMOVE} from "../constants/actionTypesCounterOne";
+// import {COUNTER_TWO_ADD, COUNTER_TWO_REMOVE} from "../constants/actionTypesCounterOne";
 
 const CounterTwo = ({counter, onAdd, onRemove, onAddNumber}) => {
   const addRandomNumber = () => {
