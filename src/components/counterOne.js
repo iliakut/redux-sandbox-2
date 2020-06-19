@@ -1,14 +1,20 @@
 import React from "react";
 import {connect} from "react-redux";
-import {onAdd, onRemove} from "../actions/counterOneActions";
+import {onAdd, onRemove, onAddNumber} from "../actions/counterOneActions";
 import {COUNTER_ONE_ADD, COUNTER_ONE_REMOVE} from "../constants/actionTypesCounterOne";
 
-const CounterOne = ({counter, onAdd, onRemove}) => {
+const CounterOne = ({counter, onAdd, onRemove, onAddNumber}) => {
+  const addRandomNumber = () => {
+    const rand = Math.floor(Math.random() * 10);
+    onAddNumber(rand);
+  };
+
   return (
     <div>
       <p>Counter one = {counter}</p>
       <button onClick={() => onAdd()}>add</button>
       <button onClick={() => onRemove()}>remove</button>
+      <button onClick={() => addRandomNumber()}>add random</button>
     </div>
   );
 };
@@ -34,7 +40,8 @@ const mapStateToProps = ({counterOne}) => ({
 // 1 варианит - объект
 const mapDispatchToProps = {
   onAdd,
-  onRemove
+  onRemove,
+  onAddNumber
 };
 
 /*

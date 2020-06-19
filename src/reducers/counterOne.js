@@ -16,6 +16,11 @@ export default (state = initialState, action) => {
         ...state,
         counter: state.counter - 1
       };
+    case types.COUNTER_ONE_ADD_NUMBER:
+      return {
+        ...state,
+        counter: state.counter + action.payload
+      };
     default:
       return state;
   }
