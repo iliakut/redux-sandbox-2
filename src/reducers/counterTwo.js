@@ -6,12 +6,12 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case types.ADD:
+    case types.COUNTER_TWO_ADD:
       return {
         ...state,
         counter: state.counter + 1
       };
-    case types.REMOVE:
+    case types.COUNTER_TWO_REMOVE:
       return {
         ...state,
         counter: state.counter - 1

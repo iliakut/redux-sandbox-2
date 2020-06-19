@@ -1,10 +1,13 @@
 import React from "react";
 import {connect} from "react-redux";
+import {onAdd, onRemove} from "../actions/counterOneActions";
 
-const CounterOne = ({counter}) => {
+const CounterOne = ({counter, onAdd, onRemove}) => {
   return (
     <div>
       <p>Counter one = {counter}</p>
+      <button onClick={() => onAdd()}>add</button>
+      <button onClick={() => onRemove()}>remove</button>
     </div>
   );
 };
@@ -16,4 +19,9 @@ const mapStateToProps = ({counterOne}) => ({
   counter: counterOne.counter
 });
 
-export default connect(mapStateToProps, null)(CounterOne);
+const mapDispatchToProps = {
+  onAdd,
+  onRemove
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CounterOne);

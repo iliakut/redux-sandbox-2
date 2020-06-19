@@ -1,5 +1,5 @@
-export const ADD = 'ADD';
-export const REMOVE = 'REMOVE';
+export const COUNTER_ONE_ADD = 'COUNTER_ONE_ADD';
+export const COUNTER_ONE_REMOVE = 'COUNTER_ONE_REMOVE';
 
 /*
 * удобно держать actionTypes в отдельных файлах
