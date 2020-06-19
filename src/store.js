@@ -23,3 +23,9 @@ export const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
+
+/*
+* TODO
+*  1. async action
+*  2. hot reload for redux
+*/
