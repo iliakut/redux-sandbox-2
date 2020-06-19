@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {onAdd, onRemove} from "../actions/counterOneActions";
+import {COUNTER_ONE_ADD, COUNTER_ONE_REMOVE} from "../constants/actionTypesCounterOne";
 
 const CounterOne = ({counter, onAdd, onRemove}) => {
   return (
@@ -19,9 +20,31 @@ const mapStateToProps = ({counterOne}) => ({
   counter: counterOne.counter
 });
 
+/*
+* доступны несколько вариантов mapDispatchToProps
+* 1. когда это объект
+* 2. когда это функция
+*
+* под капотом объект когда мы передаем объект
+* это работает через bindActionCreators
+*  return bindActionCreators(actions, dispatch);
+*/
+
+
+// 1 варианит - объект
 const mapDispatchToProps = {
   onAdd,
   onRemove
 };
+
+/*
+// 2.вариант - функция
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAdd: () => dispatch({ type: COUNTER_ONE_ADD }),
+    onRemove: () => dispatch({ type: COUNTER_ONE_REMOVE }),
+  }
+};
+*/
 
 export default connect(mapStateToProps, mapDispatchToProps)(CounterOne);
