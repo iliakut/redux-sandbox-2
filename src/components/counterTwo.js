@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 
-const CounterOne = ({counter}) => {
+const CounterTwo = ({counter}) => {
   return (
     <div>
       <p>Counter one = {counter}</p>
@@ -12,8 +12,8 @@ const CounterOne = ({counter}) => {
 /*
 * (state) - можно сразу вытащить нужный reducer через ({counterOne})
 */
-const mapStateToProps = ({counterOne}) => ({
-  counter: counterOne.counter
+const mapStateToProps = ({counterTwo}) => ({
+  counter: counterTwo.counter
 });
 
-export default connect(mapStateToProps, null)(CounterOne);
+export default connect(mapStateToProps, null)(CounterTwo);

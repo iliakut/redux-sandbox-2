@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import CounterOne from "./components/counterOne";
+import CounterTwo from "./components/counterTwo";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
           123
         </p>
         <CounterOne/>
+        <CounterTwo/>
       </header>
     </div>
   );
