@@ -12,11 +12,11 @@ import thunkMiddleware from "redux-thunk"
 *
 * 3. thunkMiddleware (код в 14 строк)
 *   позволяет делать асинхронные actions
-*   см. onDelayedAdd
+*   см. onDelayedAdd, fetchAsync в actions
 *
 */
 
-export const store = createStore(
+const store = createStore(
   reducer,
   compose (
     applyMiddleware(thunkMiddleware),
@@ -24,8 +24,17 @@ export const store = createStore(
   )
 );
 
+if (process.env.NODE_ENV !== 'production' && module.hot) {
+  /*
+  * заменяет исходный reducer на reducer который поддерживает hot
+  * позволяет изменять код редюсера и не перезагружать страницу (не терять данные)
+  */
+  module.hot.accept('./reducers/reducer', () => store.replaceReducer(reducer))
+}
+
+export default store;
+
 /*
 * TODO
-*  1. async action
-*  2. hot reload for redux
+*  1. hot reload for redux
 */
