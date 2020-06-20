@@ -21,6 +21,11 @@ export default (state = initialState, action) => {
         ...state,
         counter: state.counter + action.payload
       };
+    case types.COUNTER_TWO_DELAYED_ADD:
+      return {
+        ...state,
+        counter: state.counter + 1
+      };
     default:
       return state;
   }

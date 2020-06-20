@@ -1,6 +1,7 @@
 export const COUNTER_TWO_ADD = 'COUNTER_TWO_ADD';
 export const COUNTER_TWO_REMOVE = 'COUNTER_TWO_REMOVE';
 export const COUNTER_TWO_ADD_NUMBER = 'COUNTER_TWO_ADD_NUMBER';
+export const COUNTER_TWO_DELAYED_ADD = 'COUNTER_TWO_DELAYED_ADD';
 
 /*
 * удобно держать actionTypes в отдельных файлах
