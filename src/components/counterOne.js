@@ -1,23 +1,34 @@
 import React from "react";
 import {connect} from "react-redux";
-import {onAdd, onRemove, onAddNumber, onDelayedAdd, fetchAsync} from "../actions/counterOneActions";
+import {onAdd, onRemove, onAddNumber, onDelayedAdd, fetchAsync, test} from "../actions/counterOneActions";
 // import {COUNTER_ONE_ADD, COUNTER_ONE_REMOVE} from "../constants/actionTypesCounterOne";
 
-const CounterOne = ({counter, name, onAdd, onRemove, onAddNumber, onDelayedAdd, fetchAsync}) => {
+const CounterOne = ({counter, name, loading, error, onAdd, onRemove, onAddNumber, onDelayedAdd, fetchAsync, test}) => {
   const addRandomNumber = () => {
     const rand = Math.floor(Math.random() * 10);
     onAddNumber(rand);
   };
 
+  const Name = () => {
+    if (error) {
+      return <p>Error</p>
+    }
+    if (loading) {
+      return <p>...Loading</p>
+    }
+    return <p>async test {name}</p>
+  };
+
   return (
     <div>
       <p>Counter one = {counter}</p>
-      <p>async test: {name}</p>
+      <Name/>
       <button onClick={() => onAdd()}>add</button>
       <button onClick={() => onRemove()}>remove</button>
       <button onClick={() => addRandomNumber()}>add random</button>
       <button onClick={() => onDelayedAdd(1000)}>add delayed</button>
       <button onClick={() => fetchAsync(counter)}>test async dispatch</button>
+      <button onClick={() => test()}>test</button>
     </div>
   );
 };
@@ -27,7 +38,9 @@ const CounterOne = ({counter, name, onAdd, onRemove, onAddNumber, onDelayedAdd, 
 */
 const mapStateToProps = ({counterOne}) => ({
   counter: counterOne.counter,
-  name: counterOne.name
+  name: counterOne.name,
+  loading: counterOne.loading,
+  error: counterOne.error
 });
 
 /*
@@ -48,6 +61,7 @@ const mapDispatchToProps = {
   onAddNumber,
   onDelayedAdd,
   fetchAsync,
+  test
 };
 
 /*
