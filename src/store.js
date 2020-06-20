@@ -33,8 +33,3 @@ if (process.env.NODE_ENV !== 'production' && module.hot) {
 }
 
 export default store;
-
-/*
-* TODO
-*  1. hot reload for redux
-*/
