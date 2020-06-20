@@ -7,16 +7,24 @@ import {onAdd, onRemove, onAddNumber, onDelayedAdd} from "../actions/counterTwoA
 
 const CounterTwo = () => {
   /*
-  * Однако селектор будет производить сравнение (по умолчанию является строгим ===)
+  * useSelector будет производить сравнение (по умолчанию является строгим ===)
   * предыдущего значения результата селектора и текущего значения результата.
   * Если они отличаются, компонент будет вынужден повторно выполнить рендеринг.
   * С useSelector() возвращение нового объекта каждый раз по умолчанию будет вызывать повторный рендеринг.
+  * если из стейта берется объект, то нужно исопльзовать shallowEqual, чтобы предотвратить это.
   *
   * в отличие от connect, хук useSelector не предотвращает повторный ререндер компонента,
   * когда перерисовывается родитель, даже если пропы не изменились.
   * Поэтому для оптимизации стоит использовать React.memo()
   */
-  const counter = useSelector(state => state.counterTwo.counter, shallowEqual);
+  const counter = useSelector(state => state.counterTwo.counter);
+  // const data = useSelector(state => state.counterTwo.data, shallowEqual); - будет обновлять компонент каждый раз
+  const data = useSelector(state => state.counterTwo.data, shallowEqual); // использование shallowEqual
+  /*
+  * либо
+  * const testOne = useSelector(state => state.counterTwo.data.testOne);
+  * const testTwo = useSelector(state => state.counterTwo.data.testTwo);
+  */
 
   /*
   * useDispatch - возвращает ссылку на dispatch функцию из Redux
@@ -36,6 +44,7 @@ const CounterTwo = () => {
   return (
     <div>
       <p>Counter one = {counter}</p>
+      <p>Data = {data.testOne} {data.testTwo}</p>
       <button onClick={() => dispatch(onAdd())}>add</button>
       <button onClick={() => dispatch(onRemove())}>remove</button>
       <button onClick={() => addRandomNumber()}>add random</button>

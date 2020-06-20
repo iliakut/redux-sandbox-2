@@ -1,7 +1,11 @@
 import * as types from "../constants/actionTypesCounterTwo"
 
 const initialState = {
-  counter: 2
+  counter: 2,
+  data: {
+    testOne: 'one',
+    testTwo: 'two'
+  }
 };
 
 export default (state = initialState, action) => {
