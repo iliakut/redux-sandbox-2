@@ -23,3 +23,13 @@ export const onDelayedAdd = (timeout) => (dispatch) => {
     type: actionTypes.COUNTER_ONE_DELAYED_ADD,
   }), timeout);
 };
+
+export const fetchAsync = (id) => async (dispatch) => {
+  const resp = await fetch(`https://swapi.dev/api/planets/${id}`);
+  const data = await resp.json();
+  const name = data.name;
+  return dispatch({
+    type: actionTypes.COUNTER_ONE_ASYNC_GET_NAME,
+    payload: name
+  })
+};
