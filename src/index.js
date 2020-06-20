@@ -5,10 +5,20 @@ import App from './App';
 import {Provider} from "react-redux";
 import store from "./store";
 
+const render = (RootComponent) => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <RootComponent />
+    </Provider>,
+    document.getElementById('root')
+  );
+};
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+render(App);
+
+
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    render(App);
+  });
+}
